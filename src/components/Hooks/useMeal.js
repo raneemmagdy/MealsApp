@@ -10,7 +10,9 @@ export default function useFetchMeals(url) {
   async function getMeals() {
     try {
       const { data } = await axios.get(url);
-      setMeals(data.meals);
+      setMeals(data);
+      console.log(data);
+      
    
     } catch (err) {
      console.log(err)
@@ -18,10 +20,10 @@ export default function useFetchMeals(url) {
   }
 
   useEffect(() => {
-    if (url) {
+    
       getMeals();
-    }
-  }, []); // Depend on `url` to re-fetch meals when it changes
+    
+  }, []); 
 
-  return { meals};
+  return meals;
 }
